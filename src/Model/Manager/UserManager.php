@@ -1,5 +1,10 @@
 <?php
 
+namespace Cleme\Forum\Model\Manager;
+
+use Cleme\Forum\Model\DB;
+use Cleme\Forum\Model\Entity\User;
+
 class UserManager {
 
     // Get all User

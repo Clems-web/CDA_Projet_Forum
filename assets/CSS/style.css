@@ -6,3 +6,122 @@
     font-family: 'Roboto', sans-serif;
 }
 
+#container {
+    width: 100%;
+    height: fit-content;
+    min-height: 100vh;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background-color: #091921;
+}
+
+#navbar {
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#navbar ul {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+li {
+    font-size: 4rem;
+    list-style: none;
+}
+
+i {
+    color: lightcyan;
+    text-shadow: 0 0 8px cyan;
+}
+
+li a {
+    text-decoration: none;
+    padding-left: 1rem;
+    color: lightcyan;
+    text-shadow: 0 0 8px cyan;
+}
+
+#footer {
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#footer ul {
+    width: 100%;
+    margin-top: 26rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: lightcyan;
+    text-shadow: 0 0 8px cyan;
+}
+
+#containerHomepage {
+    width: 100%;
+    padding: 8rem;
+}
+
+#containerHomepage h1 {
+    font-size: 5rem;
+    color: lightcyan;
+}
+
+#container p {
+    font-size: 3rem;
+    color: lightcyan;
+}
+
+#containerHomepage #content {
+    margin-top: 2rem;
+}
+
+#categoryContainer {
+    width: 100%;
+    height: fit-content;
+    padding: 5%;
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#categoryContainer div {
+    width: 30%;
+    height: 8rem;
+    border: 1px solid cyan;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0 0 8px cyan;
+}
+
+#categoryContainer div:hover {
+    background-color: cyan;
+    text-shadow: 0 0 8px #091921;
+    box-shadow: 0 0 10px 3px cyan;
+}
+
+#categoryContainer a {
+    color: lightcyan;
+    text-decoration: none;
+    font-size: 4rem;
+    text-align: center;
+    padding-top: 1.5rem;
+    width: 100%;
+    height: 100%;
+}
+
+a:visited {
+    color: lightcyan;
+}

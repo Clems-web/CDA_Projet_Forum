@@ -14,8 +14,7 @@
     <div id="navbar">
         <ul>
             <li><i class="fas fa-home"></i><a href="./index.php">Accueil</a></li>
-            <li><i class="fas fa-book"></i><a href="?controller=recipe">Recette</a></li>
-            <li><i class="fas fa-utensils"></i><a href="?controller=composer">What's in my fridge ?</a></li>
+            <li><i class="fas fa-book"></i><a href="?controller=category">Catégories</a></li>
             <li id="liAccount">
                 <?php
                 if (isset($_SESSION['user'])) {

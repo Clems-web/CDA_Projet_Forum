@@ -1,5 +1,9 @@
 <?php
 
+namespace Cleme\Forum\Model;
+
+use PDO;
+use PDOException;
 
 class DB {
 
@@ -12,7 +16,7 @@ class DB {
         $server = 'localhost';
         $user = 'root';
         $password = '';
-        $database = '';
+        $database = 'cda_forum';
 
         try {
             self::$dbInstance = new PDO("mysql:host=$server;dbname=$database;charset=utf8", $user, $password);

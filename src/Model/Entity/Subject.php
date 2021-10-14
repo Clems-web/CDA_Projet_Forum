@@ -1,5 +1,7 @@
 <?php
 
+namespace Cleme\Forum\Model\Entity;
+
 class Subject {
 
     private ?int $id;

@@ -1,5 +1,6 @@
 <?php
 
+namespace Cleme\Forum\Model\Entity;
 
 class User {
 

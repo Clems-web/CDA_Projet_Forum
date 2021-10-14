@@ -1,14 +1,15 @@
 <?php
 
-class Render {
+namespace Cleme\Forum\Controller;
+
+trait RenderView {
 
     /**
-     * Render constructor.
      * @param string $view
      * @param string $title
      * @param array|null $var
      */
-    public function __construct(string $view, string $title, array $var = null) {
+    public function render(string $view, string $title, array $var = null) {
         ob_start();
         require_once $_SERVER['DOCUMENT_ROOT'] . "/View/".$view.".view.php";
         $html = ob_get_clean();

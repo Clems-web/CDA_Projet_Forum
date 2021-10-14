@@ -1,24 +1,12 @@
 <?php
 
-// BDD
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Model/DB.php';
+use Cleme\Forum\Controller\CategoryController;
+use Cleme\Forum\Controller\HomeController;
 
-// Object
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Model/Entity/Recipe.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Model/Entity/User.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Model/Entity/Role.php';
+require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
 
-// Controller
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Controller/RenderView.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Controller/HomeController.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Controller/RecipeController.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Controller/UserController.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Controller/RoleController.php';
 
-// Manager
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Model/Manager/RecipeManager.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Model/Manager/UserManager.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Model/Manager/RoleManager.php';
+
 
 session_start();
 
@@ -26,44 +14,33 @@ if (isset($_GET['controller'])) {
 
     switch ($_GET['controller']) {
 
-        case 'connexion' :
-            $controller = new UserController();
-            $controller->userConnect();
+        case 'category' :
+            $controller = new CategoryController();
+            $controller->getCategory();
             break;
-
-        case 'registration' :
-            $controller = new UserController();
-            $controller->userRegister();
+        case 'Jeux' :
+            $controller = new CategoryController();
+            $controller->getJeux();
             break;
-
-        case 'profile' :
-            $controller = new UserController();
-            $controller->userProfile();
+        case 'Film' :
+            $controller = new CategoryController();
+            $controller->getFilm();
             break;
-
-        case 'updateUser' :
-            $controller = new UserController();
-            $controller->userUpdate();
+        case 'Séries' :
+            $controller = new CategoryController();
+            $controller->getSeries();
             break;
-
-        case 'DeleteUser' :
-            $controller = new UserController();
-            $controller->userDelete();
+        case 'Manga' :
+            $controller = new CategoryController();
+            $controller->getManga();
             break;
-
-        case 'addArticle' :
-            $controller = new RecipeController();
-            $controller->addRecipe();
+        case 'Anime' :
+            $controller = new CategoryController();
+            $controller->getAnime();
             break;
-
-        case 'recipe' :
-            $controller = new RecipeController();
-            $controller->getRecipe();
-            break;
-
-        case 'composer' :
-            $controller = new RecipeController();
-            $controller->findRecipe();
+        case 'Roman' :
+            $controller = new CategoryController();
+            $controller->getRoman();
             break;
     }
 }

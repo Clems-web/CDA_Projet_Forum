@@ -1,5 +1,7 @@
 <?php
 
+namespace Cleme\Forum\Model\Entity;
+
 class Commentary {
 
     private ?int $id;

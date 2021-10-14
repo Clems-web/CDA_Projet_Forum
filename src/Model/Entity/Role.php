@@ -1,16 +1,18 @@
 <?php
 
-class Category {
+namespace Cleme\Forum\Model\Entity;
+
+class Role {
+
     private ?int $id;
     private ?string $title;
 
-
     /**
-     * category constructor
+     * Role constructor.
      * @param int|null $id
-     * @param string|null $title
+     * @param string $title
      */
-    public function __construct(?int $id, ?string $title) {
+    public function __construct(?int $id, string $title) {
         $this->id = $id;
         $this->title = $title;
     }
