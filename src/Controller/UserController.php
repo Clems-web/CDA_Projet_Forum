@@ -9,4 +9,8 @@ class UserController {
     public function userConnect() {
         $this->render('connexion', 'Se connecter');
     }
+
+    public function userRegister() {
+        $this->render('registration', 'Inscription');
+    }
 }

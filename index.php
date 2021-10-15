@@ -47,6 +47,10 @@ if (isset($_GET['controller'])) {
         case 'connexion' :
             (new UserController)->userConnect();
             break;
+
+        case 'registration' :
+            (new UserController())->userRegister();
+            break;
     }
 }
 else {
