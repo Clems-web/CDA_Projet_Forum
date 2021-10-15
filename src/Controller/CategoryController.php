@@ -16,6 +16,7 @@ class CategoryController {
         $this->render('categories', 'Les catégories');
     }
 
+
     public function getJeux() {
         $this->render('Jeux', 'Jeux vidéos');
     }

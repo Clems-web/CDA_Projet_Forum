@@ -2,6 +2,7 @@
 
 use Cleme\Forum\Controller\CategoryController;
 use Cleme\Forum\Controller\HomeController;
+use Cleme\Forum\Controller\UserController;
 
 require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
 
@@ -15,38 +16,42 @@ if (isset($_GET['controller'])) {
     switch ($_GET['controller']) {
 
         case 'category' :
-            $controller = new CategoryController();
-            $controller->getCategory();
+            (new CategoryController())->getCategory();
             break;
+
         case 'Jeux' :
-            $controller = new CategoryController();
-            $controller->getJeux();
+            (new CategoryController())->getJeux();
             break;
+
         case 'Film' :
-            $controller = new CategoryController();
-            $controller->getFilm();
+            (new CategoryController())->getFilm();
             break;
+
         case 'Séries' :
-            $controller = new CategoryController();
-            $controller->getSeries();
+            (new CategoryController())->getSeries();
             break;
+
         case 'Manga' :
-            $controller = new CategoryController();
-            $controller->getManga();
+            (new CategoryController())->getManga();
             break;
+
         case 'Anime' :
-            $controller = new CategoryController();
-            $controller->getAnime();
+            (new CategoryController())->getAnime();
             break;
+
         case 'Roman' :
-            $controller = new CategoryController();
-            $controller->getRoman();
+            (new CategoryController())->getRoman();
+            break;
+
+
+        case 'connexion' :
+            (new UserController)->userConnect();
             break;
     }
 }
 else {
-    $controller = new HomeController();
-    $controller->homePage();
+
+    (new HomeController())->homePage();
 
 }
 

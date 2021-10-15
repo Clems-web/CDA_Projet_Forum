@@ -3,8 +3,7 @@
 use Cleme\Forum\Model\Entity\Category;
 use Cleme\Forum\Model\Manager\CategoryManager;
 
-$manager = new CategoryManager();
-$result = $manager->getCategory();
+$result = (new CategoryManager())->getCategory();
 
 
 ?>

@@ -99,6 +99,7 @@ li a {
     width: 30%;
     height: 8rem;
     border: 1px solid cyan;
+    border-radius: 5px;
     margin-top: 2rem;
     display: flex;
     align-items: center;
