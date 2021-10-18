@@ -6,24 +6,30 @@ class User {
 
     private ?int $id;
     private ?string $username;
-    private ?string $password;
     private ?string $mail;
+    private ?string $password;
+    private ?string $token;
+    private ?int $confirmed;
     private ?int $role;
 
 
     /**
-     * User constructor.
+     * User constructor
      * @param int|null $id
      * @param string $username
-     * @param string $password
      * @param string $mail
+     * @param string $password
+     * @param string $token
+     * @param int $confirmed
      * @param int $role
      */
-    public function __construct(?int $id, string $username, string $password, string $mail, int $role) {
+    public function __construct(?int $id, string $username, string $mail, string $password, string $token, int $confirmed, int $role) {
         $this->id = $id;
         $this->username = $username;
-        $this->password = $password;
         $this->mail = $mail;
+        $this->password = $password;
+        $this->token = $token;
+        $this->confirmed = $confirmed;
         $this->role = $role;
     }
 
@@ -62,6 +68,22 @@ class User {
     /**
      * @return string|null
      */
+    public function getMail(): ?string
+    {
+        return $this->mail;
+    }
+
+    /**
+     * @param string|null $mail
+     */
+    public function setMail(?string $mail): void
+    {
+        $this->mail = $mail;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getPassword(): ?string
     {
         return $this->password;
@@ -78,19 +100,34 @@ class User {
     /**
      * @return string|null
      */
-    public function getMail(): ?string
+    public function getToken(): ?string
     {
-        return $this->mail;
+        return $this->token;
     }
 
     /**
-     * @param string|null $mail
+     * @param string|null $token
      */
-    public function setMail(?string $mail): void
+    public function setToken(?string $token): void
     {
-        $this->mail = $mail;
+        $this->token = $token;
     }
 
+    /**
+     * @return int|null
+     */
+    public function getConfirmed(): ?int
+    {
+        return $this->confirmed;
+    }
+
+    /**
+     * @param int|null $confirmed
+     */
+    public function setConfirmed(?int $confirmed): void
+    {
+        $this->confirmed = $confirmed;
+    }
 
     /**
      * @return int|null
@@ -107,5 +144,7 @@ class User {
     {
         $this->role = $role;
     }
+
+
 
 }

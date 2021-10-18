@@ -1,5 +1,5 @@
 <div id="containerFormSubscription">
-    <form action="../register.php" method="post">
+    <form action="?controller=UserRegistration" method="POST">
         <div>
             <label for="pseudo">Pseudo</label>
             <input type="text" name="user-pseudo" id="pseudo">

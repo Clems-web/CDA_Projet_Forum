@@ -3,6 +3,8 @@
 use Cleme\Forum\Controller\CategoryController;
 use Cleme\Forum\Controller\HomeController;
 use Cleme\Forum\Controller\UserController;
+use Cleme\Forum\Model\Entity\User;
+use Cleme\Forum\Model\Manager\UserManager;
 
 require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
 
@@ -50,6 +52,10 @@ if (isset($_GET['controller'])) {
 
         case 'registration' :
             (new UserController())->userRegister();
+            break;
+
+        case 'UserRegistration' :
+            (new UserController())->userRegistration();
             break;
     }
 }

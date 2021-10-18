@@ -15,7 +15,15 @@ class UserManager {
         if ($result) {
             $data = $request->fetchAll();
             foreach($data as $user_data) {
-                $user[] = new User($user_data['id'], $user_data['name'], $user_data['password'], $user_data['mail'] ,$user_data['role_fk']);
+                $user[] = new User(
+                    $user_data['id'],
+                    $user_data['username'],
+                    $user_data['mail'],
+                    $user_data['password'],
+                    $user_data['token'],
+                    $user_data['confirmed'],
+                    $user_data['role_fk']
+                );
             }
         }
         return $user;
@@ -30,7 +38,15 @@ class UserManager {
         if ($result) {
             $data = $request->fetch();
             if ($data) {
-                $user = new User($data['id'], $data['username'], $data['password'], $data['mail'], $data['role_fk']);
+                $user = new User(
+                    $data['id'],
+                    $data['username'],
+                    $data['mail'],
+                    $data['password'],
+                    $data['token'],
+                    $data['confirmed'],
+                    $data['role_fk']
+                );
             }
         }
         return $user;
@@ -50,8 +66,10 @@ class UserManager {
                     $user = new User(
                         $user_data['id'],
                         $user_data['username'],
-                        $password,
                         $user_data['mail'],
+                        $password,
+                        $user_data['token'],
+                        $user_data['confirmed'],
                         $user_data['role_fk']
                     );
                     return $user;
@@ -61,50 +79,35 @@ class UserManager {
         return false;
     }
 
-    // Get User by Id
-    public function getById(int $id){
-        $user = [];
-        $request = DB::getInstance()->prepare("SELECT * FROM user WHERE id = :id");
-        $request->bindValue(':id', $id);
-        $result = $request->execute();
-        if($result) {
-            $user_data = $request->fetch();
-            if($user_data) {
-                $user = new User($user_data['id'], $user_data['name'], $user_data['password'], $user_data['mail'], $user_data['role_fk']);
-            }
-        }
-        return $user;
-    }
 
     // If user's Id is null or equal to 0, that's an insert into DB
     public function saveUser(User $user) : string {
         if ($user->getId() === 0 || $user->getId() == null) {
             $request = DB::getInstance()->prepare("
-        INSERT INTO user(username, password, mail, role_fk) VALUES (:username, :password, :mail,:role_fk)
+        INSERT INTO user(username, mail, password, token, confirmed, role_fk) VALUES (:username, :mail, :password, :token, :confirmed ,:role_fk)
         ");
 
             $request->bindValue(':username', $user->getUsername());
             $request->bindValue(':password', password_hash($user->getPassword(), PASSWORD_DEFAULT));
             $request->bindValue(':mail', $user->getMail());
+            $request->bindValue(':token', $user->getToken());
+            $request->bindValue(':confirmed', $user->getConfirmed());
             $request->bindValue(':role_fk', $user->getRole());
 
             $request->execute();
-
-            if ($request) {
-                echo "User saved in DB";
-                return 'ok';
-            }
         }
 
         // Else it's an User's update
         else {
             $request = DB::getInstance()->prepare("
-            UPDATE user SET username = :username, password = :password, mail = :mail, role_fk = :role_fk WHERE id = :id
+            UPDATE user SET username = :username, password = :password, mail = :mail, token = :token, confirmed = :confirmed, role_fk = :role_fk WHERE id = :id
             ");
 
             $request->bindValue(':username', $user->getUsername());
             $request->bindValue(':password', password_hash($user->getPassword(), PASSWORD_DEFAULT));
             $request->bindValue(':mail', $user->getMail());
+            $request->bindValue(':token', $user->getToken());
+            $request->bindValue(':confirmed', $user->getConfirmed());
             $request->bindValue(':role_fk', $user->getRole());
             $request->bindValue(':id', $user->getId());
 
@@ -115,21 +118,8 @@ class UserManager {
                 return 'ok';
             }
         }
-
+        return "";
     }
 
-
-    //Deleted User from DB
-    public function delUser(User $user) {
-        $request = DB::getInstance()->prepare("
-        DELETE FROM user WHERE id = :id;
-        ");
-        $request->bindValue('id', $user->getId());
-
-        $result = $request->execute();
-        if ($result) {
-            echo "User supprimé";
-        }
-    }
 
 }
