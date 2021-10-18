@@ -50,12 +50,28 @@ if (isset($_GET['controller'])) {
             (new UserController)->userConnect();
             break;
 
+        case 'userConnexion' :
+            (new UserController())->userConnexion();
+            break;
+
+        case 'deconnexion' :
+            (new UserController())->userDeconnexion();
+            break;
+
         case 'registration' :
             (new UserController())->userRegister();
             break;
 
         case 'UserRegistration' :
             (new UserController())->userRegistration();
+            break;
+
+        case 'verify' :
+            (new UserController())->userConfirm();
+            break;
+
+        case 'panel' :
+            (new UserController())->panel();
             break;
     }
 }

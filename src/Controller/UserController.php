@@ -43,10 +43,68 @@ class UserController {
                 );
 
                 (new UserManager())->saveUser($user);
-                mail()
+
+                $to = $user->getMail();
+                $subject = 'Signup | Verification';
+                $message = '
+                Merci de votre inscription ! 
+                Votre compte a bien été créé, vous pourrez vous connecter avec vos identifiants après avoir activé votre
+                compte en cliquant sur ce lien.
+                
+                http://localhost:8000/index.php?controller=verify&token='.$user->getToken().'
+                ';
+                $headers = 'From:clement.servais1@gmail.com' . "\r\n"; // Set from headers
+                mail($to, $subject, $message, $headers); // Send our email
             }
         }
         header('Location: ../index.php');
     }
-}
 
+    public function userConfirm() {
+        if (isset($_GET['token'])) {
+
+            $db = new DB;
+            $safe = $db->cleanInput($_GET['token']);
+
+            (new UserManager())->confirmUser($safe);
+            header('Location: ../index.php');
+        }
+    }
+
+    public function userConnexion() {
+
+        if (isset($_POST['user-mail']) && isset($_POST['user-pass']))  {
+
+            $manager = new UserManager();
+            $db = new DB();
+
+            if (($_POST['user-mail'] !== 'mail deleted') && ($_POST['user-pass'] !== 'password deleted')) {
+
+                $pass = $db->cleanInput($_POST['user-pass']);
+                $mail = $db->cleanInput($_POST['user-mail']);
+
+                $userConnected = $manager->connectUser($mail, $pass);
+                if ($userConnected !== false) {
+                    $_SESSION['user'] = $userConnected;
+                }
+            }
+        }
+        header('Location: ../index.php');
+    }
+
+    public function userDeconnexion() {
+        session_start();
+        $_SESSION = array();
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000, $params['path'], $params['domain'], $params['secure'],$params['HttpOnly']);
+        session_destroy();
+
+        header('Location: ../index.php');
+    }
+
+    public function panel() {
+        $this->render('panel', 'Panel');
+    }
+
+
+}

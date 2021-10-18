@@ -121,5 +121,17 @@ class UserManager {
         return "";
     }
 
+    public function confirmUser($tokenId) {
+        $request = DB::getInstance()->prepare("
+            UPDATE user SET token = :token, confirmed = :confirmed WHERE token = :tokenId
+        ");
+
+        $request->bindValue(':tokenId', $tokenId);
+        $request->bindValue(':token', '');
+        $request->bindValue(':confirmed', 1);
+
+        $request->execute();
+    }
+
 
 }

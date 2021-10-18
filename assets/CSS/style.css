@@ -40,7 +40,7 @@ i {
     text-shadow: 0 0 8px cyan;
 }
 
-li a {
+li a, #liAccount span {
     text-decoration: none;
     padding-left: 1rem;
     color: lightcyan;

@@ -1,5 +1,5 @@
 <div id="containerFormInscription">
-    <form action="../connexion.php" method="post">
+    <form action="?controller=userConnexion" method="post">
         <div>
             <label for="mail">Mail</label>
             <input type="email" name="user-mail" id="mail">

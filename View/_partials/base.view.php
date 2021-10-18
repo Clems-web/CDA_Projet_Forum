@@ -17,9 +17,13 @@
             <li><i class="fas fa-book"></i><a href="?controller=category">Catégories</a></li>
             <li id="liAccount">
                 <?php
-                if (isset($_SESSION['user'])) {
-                    echo '<i class="fas fa-user"></i><a href="?controller=profile">'.$_SESSION['user']->getUsername().'</a>';
-                    echo '<div id="subMenu"><a href="./deconnexion.php">Se déconnecter</a></div>';
+                if ((isset($_SESSION['user'])) && $_SESSION['user']->getRole() == 1) {
+                    echo '<i class="fas fa-user"></i><a href="?controller=panel">'.$_SESSION['user']->getUsername().'</a>';
+                    echo '<div id="subMenu"><a href="?controller=deconnexion">Se déconnecter</a></div>';
+                }
+                elseif (isset($_SESSION['user'])) {
+                    echo '<i class="fas fa-user"></i><span>'.$_SESSION['user']->getUsername().'</span>';
+                    echo '<div id="subMenu"><a href="?controller=deconnexion">Se déconnecter</a></div>';
                 }
                 else {
                     echo '<i class="fas fa-user"></i><a href="?controller=connexion">Connexion</a>';
