@@ -15,7 +15,7 @@ class CategoryManager {
         if ($result) {
             $data = $request->fetchAll();
             foreach($data as $category_data) {
-                $category[] = new Category($category_data['id'], $category_data['title']);
+                $category[] = new Category($category_data['id'], $category_data['categoryName']);
             }
         }
         return $category;

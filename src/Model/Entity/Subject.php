@@ -5,18 +5,24 @@ namespace Cleme\Forum\Model\Entity;
 class Subject {
 
     private ?int $id;
+    private ?string $title;
     private ?string $content;
+    private ?string $date;
     private ?int $category_fk;
 
     /**
      * Subject constructor
      * @param int|null $id
+     * @param string|null $title
      * @param string|null $content
+     * @param string|null $date
      * @param int|null $category_fk
      */
-    public function __construct(?int $id, ?string $content, ?int $category_fk) {
+    public function __construct(?int $id, ?string $title, ?string $content,?string $date, ?int $category_fk) {
         $this->id = $id;
+        $this->title = $title;
         $this->content = $content;
+        $this->date = $date;
         $this->category_fk = $category_fk;
     }
 
@@ -39,6 +45,22 @@ class Subject {
     /**
      * @return string|null
      */
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string|null $title
+     */
+    public function setTitle(?string $title): void
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getContent(): ?string
     {
         return $this->content;
@@ -50,6 +72,22 @@ class Subject {
     public function setContent(?string $content): void
     {
         $this->content = $content;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDate(): ?string
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param string|null $date
+     */
+    public function setDate(?string $date): void
+    {
+        $this->date = $date;
     }
 
     /**

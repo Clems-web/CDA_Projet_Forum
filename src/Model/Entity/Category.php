@@ -4,17 +4,17 @@ namespace Cleme\Forum\Model\Entity;
 
 class Category {
     private ?int $id;
-    private ?string $title;
+    private ?string $categoryName;
 
 
     /**
      * category constructor
      * @param int|null $id
-     * @param string|null $title
+     * @param string|null $categoryName
      */
-    public function __construct(?int $id, ?string $title) {
+    public function __construct(?int $id, ?string $categoryName) {
         $this->id = $id;
-        $this->title = $title;
+        $this->categoryName = $categoryName;
     }
 
     /**
@@ -36,18 +36,20 @@ class Category {
     /**
      * @return string|null
      */
-    public function getTitle(): ?string
+    public function getCategoryName(): ?string
     {
-        return $this->title;
+        return $this->categoryName;
     }
 
     /**
-     * @param string|null $title
+     * @param string|null $categoryName
      */
-    public function setTitle(?string $title): void
+    public function setCategoryName(?string $categoryName): void
     {
-        $this->title = $title;
+        $this->categoryName = $categoryName;
     }
+
+
 
 
 }

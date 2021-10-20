@@ -133,5 +133,22 @@ class UserManager {
         $request->execute();
     }
 
+    public function getUserName(int $userId) {
+        $user = "";
 
+        $request = DB::getInstance()->prepare("SELECT username FROM user WHERE id = :id");
+
+        $request->bindValue(':id', $userId);
+
+        $result = $request->execute();
+
+        if ($result) {
+
+            $data = $request->fetch();
+            if ($data) {
+                $user = $data['username'];
+            }
+        }
+        return $user;
+    }
 }

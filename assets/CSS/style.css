@@ -5,6 +5,10 @@
     font-size: 62.5%;
     font-family: 'Roboto', sans-serif;
 }
+body {
+    width: 100%;
+    height: fit-content;
+}
 
 #container {
     width: 100%;
@@ -188,3 +192,51 @@ a:visited {
     color: darkmagenta;
     text-shadow: 0 0 8px darkmagenta;
 }
+
+#viewContainer {
+    width: 100%;
+    height: fit-content;
+}
+
+#viewContainer h1 {
+    margin-left: 10%;
+    color: lightcyan;
+    text-shadow: 0 0 8px cyan;
+    font-size: 3rem;
+}
+
+.subjectContainer, .commentaryContainer {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 1px solid cyan;
+    border-radius: 5px;
+    color: lightcyan;
+}
+
+.commentaryContainer {
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 1rem;
+    border: 1px solid #0fec30;
+}
+
+.subjectContainer div h2, .commentaryContainer div h2 {
+    font-size: 3rem;
+}
+
+.subjectContainer div h3, .commentaryContainer div h3 {
+    font-size: 2rem;
+}
+
+.titleHead {
+    display: flex;
+    justify-content: space-between;
+}
+
+.subjectContent, .commentContent {
+    padding: 1.5rem;
+    font-size: 2rem;
+}
+

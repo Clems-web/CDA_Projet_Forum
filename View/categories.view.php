@@ -10,7 +10,7 @@ $result = (new CategoryManager())->getCategory();
 <div id="categoryContainer">
     <?php
     foreach ($result as $part) {
-        echo "<div><a href='?controller=".$part->getTitle()."'>".$part->getTitle()."</a></div>";
+        echo "<div><a href='?controller=".$part->getcategoryName()."'>".$part->getcategoryName()."</a></div>";
     }
     ?>
 </div>
