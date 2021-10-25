@@ -13,7 +13,6 @@
         echo "<div class='subjectContainer'>
                 <div class='titleHead'>
                     <h2>".$subject->getTitle()."</h2>
-                    <h3>Posté le : ".$subject->getDate()."</h3>
                 </div>
                 
                 <div class='subjectContent'>".$subject->getContent()."</div>
@@ -24,8 +23,7 @@
         foreach ($commantaryTab as $comment) {
             echo "<div class='commentaryContainer'>
                     <div class='titleHead'>
-                        <h2>".(new UserManager())->getUserName($comment->getUserfk())."</h2>
-                        <h3>".$comment->getDate()."</h3>   
+                        <h2>".(new UserManager())->getUserName($comment->getUserfk())."</h2>  
                     </div>
                     <div class='commentContent'>".$comment->getContent()."</div>
                   </div>";

@@ -13,23 +13,37 @@
         echo "<div class='subjectContainer'>
                 <div class='titleHead'>
                     <h2>".$subject->getTitle()."</h2>
-                    <h3>Posté le : ".$subject->getDate()."</h3>
                 </div>
                 
                 <div class='subjectContent'>".$subject->getContent()."</div>
               </div>";
+
 
         $commantaryTab = (new CommentaryManager())->getCommentaryBySubjectId($subject->getId());
 
         foreach ($commantaryTab as $comment) {
             echo "<div class='commentaryContainer'>
                     <div class='titleHead'>
-                        <h2>".(new UserManager())->getUserName($comment->getUserfk())."</h2>
-                        <h3>".$comment->getDate()."</h3>   
+                        <h2>".(new UserManager())->getUserName($comment->getUserfk())."</h2>  
                     </div>
                     <div class='commentContent'>".$comment->getContent()."</div>
                   </div>";
         }
+
+        if (isset($_SESSION['user'])) {
+            echo "<div class='addCommentForm'>
+                  <fieldset>
+                      <legend>Commenter</legend>
+                          <form action='?controller=addComment&subjectId=".$subject->getId()."' method='POST'>
+        
+                            <textarea name='comment' id='message' cols='30' rows='10'></textarea>
+                            <button type='submit'>Envoyer</button>
+                            
+                          </form>  
+                  </fieldset>
+              </div>";
+        }
+
     }
 
 

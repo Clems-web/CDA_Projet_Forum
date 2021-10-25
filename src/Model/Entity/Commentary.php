@@ -6,7 +6,6 @@ class Commentary {
 
     private ?int $id;
     private ?string $content;
-    private ?string $date;
     private ?int $subject_fk;
     private ?int $user_fk;
 
@@ -14,14 +13,12 @@ class Commentary {
      * Commentary constructor
      * @param int|null $id
      * @param string|null $content
-     * @param string|null $date
      * @param int|null $subject_fk
      * @param int|null $user_fk
      */
-    public function __construct(?int $id, ?string $content, ?string $date, ?int $subject_fk, ?int $user_fk) {
+    public function __construct(?int $id, ?string $content, ?int $subject_fk, ?int $user_fk) {
         $this->id = $id;
         $this->content = $content;
-        $this->date = $date;
         $this->subject_fk = $subject_fk;
         $this->user_fk = $user_fk;
     }
@@ -58,21 +55,6 @@ class Commentary {
         $this->content = $content;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getDate(): ?string
-    {
-        return $this->date;
-    }
-
-    /**
-     * @param string|null $date
-     */
-    public function setDate(?string $date): void
-    {
-        $this->date = $date;
-    }
 
     /**
      * @return int|null

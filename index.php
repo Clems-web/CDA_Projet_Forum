@@ -3,6 +3,7 @@
 use Cleme\Forum\Controller\CategoryController;
 use Cleme\Forum\Controller\HomeController;
 use Cleme\Forum\Controller\UserController;
+use Cleme\Forum\Controller\CommentController;
 use Cleme\Forum\Model\Entity\User;
 use Cleme\Forum\Model\Manager\UserManager;
 
@@ -73,6 +74,12 @@ if (isset($_GET['controller'])) {
         case 'panel' :
             (new UserController())->panel();
             break;
+
+        case 'addComment' :
+            (new CommentController())->addComment();
+            break;
+
+
     }
 }
 else {

@@ -21,13 +21,26 @@ class CommentaryManager {
                 $commentaryTab[] = new Commentary(
                     $commentary_data['id'],
                     $commentary_data['content'],
-                    $commentary_data['date'],
                     $commentary_data['subject_fk'],
                     $commentary_data['user_fk']
                 );
             }
         }
         return $commentaryTab;
+    }
+
+
+    public function addCommentIntoDB(Commentary $commentary) {
+        $request = DB::getInstance()->prepare("
+        INSERT INTO commentary(content, subject_fk, user_fk) VALUES (:content, :subject_fk, :user_fk)
+        ");
+
+        $request->bindValue(':content', $commentary->getContent());
+        $request->bindValue(':subject_fk', $commentary->getSubjectFk());
+        $request->bindValue(':user_fk', $commentary->getUserFk());
+
+        $request->execute();
+
     }
 
 }

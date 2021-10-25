@@ -25,7 +25,6 @@ class SubjectManager
                     $subject_data['id'],
                     $subject_data['title'],
                     $subject_data['content'],
-                    $subject_data['date'],
                     $subject_data['categorie_fk']
                 );
             }

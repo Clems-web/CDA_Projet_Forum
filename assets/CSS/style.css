@@ -240,3 +240,45 @@ a:visited {
     font-size: 2rem;
 }
 
+.addCommentForm {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 1rem;
+}
+
+.addCommentForm legend {
+    color: #0fec30;
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+.addCommentForm form {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2rem;
+}
+
+.addCommentForm textarea {
+    width: 70%;
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+.addCommentForm button {
+    width: 20%;
+    font-size: 2rem;
+    padding: 1rem;
+    border: 1px solid cyan;
+    background-color: #091921;
+    border-radius: 5px;
+    color: lightcyan;
+    text-shadow: 0 0 8px cyan;
+}
+
+.addCommentForm button:hover {
+    background-color: cyan;
+    text-shadow: 0 0 8px #091921;
+    box-shadow: 0 0 10px 3px cyan;
+}
+
